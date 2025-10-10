@@ -14,8 +14,14 @@
             <p>Номер: {{ $reports -> number }}</p>
             <p>Описание: {{ $reports -> description }}</p>
             <p>Дата: {{ $reports -> created_at }}</p>
+            <form method="POST" action="{{route('reports.destroy', $reports->id)}}">
+              @method('delete')
+              @csrf 
+              <input type="submit" value="Удалить">
+            </form>
           </div>
         @endforeach
     </div>
+    <a href="{{ route('reports.create') }}">Создать заявление</a>
 </body>
 </html>

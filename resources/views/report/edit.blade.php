@@ -10,10 +10,10 @@
         @csrf
         @method('put')
        
-        <input type="text" name = "number" placeholder="{{ $report -> number }}">
-        <textarea name="description" id="" placeholder = "{{ $report -> description }}"></textarea>
+        <input type="text" name = "number" value="{{ $report -> number }}">
+        <textarea name="description" id="" placeholder = "">{{ $report -> description }}</textarea>
         <input type="submit" value = "Обновить">
-        <a href="{{ route('report.index') }}"><</a>
+        <a href="{{ route('report.index') }}"><-</a>
     </form>
 </body>
 </html>

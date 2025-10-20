@@ -19,6 +19,7 @@
               @csrf 
               <input type="submit" value="Удалить">
             </form>
+            <a href="{{ route('reports.edit',  ['report' => $reports->id]) }}">Обновить заявление</a>
           </div>
         @endforeach
     </div>

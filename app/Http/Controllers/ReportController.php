@@ -20,7 +20,7 @@ class ReportController extends Controller
     public function store(Request $request, Report $report) {
         $data = $request -> validate([
             'number' => 'string',
-            'description' => 'text'
+            'description' => 'string'
         ]);
 
         $report -> create($data);
@@ -28,13 +28,13 @@ class ReportController extends Controller
     }
 
     public function edit(Report $report) {
-        return view('reports.edit', compact('report'));
+        return view('report.edit', compact('report'));
     }
 
     function update(Request $request, Report $report) {
         $data = $request -> validate([
             'number' => 'string',
-            'description' => 'text'
+            'description' => 'string'
         ]);
 
         $report -> update($data);

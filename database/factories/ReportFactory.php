@@ -21,7 +21,7 @@ class ReportFactory extends Factory
             'number' => $faker -> numerify('aaa-###'),
             'description' => $faker -> paragraph,
             'created_at' => $faker -> dateTimeBetween('-1 week', 'now'),
-            'status_id' => 1
+            'status_id' => 4
         ];
     }
 }

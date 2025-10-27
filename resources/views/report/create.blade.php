@@ -18,8 +18,8 @@
          
         @csrf
            
-        <input type="text" name="number"  placeholder="Номер автомобиля">
-        <textarea name="description"  placeholder="Описание"></textarea>
+        <input type="text" name="number"  placeholder="Номер автомобиля" required>
+        <textarea name="description"  placeholder="Описание" required></textarea>
         <button type="submit">Создать</button>
         <a href="{{ route('report.index') }}"><-</a>
         </form>

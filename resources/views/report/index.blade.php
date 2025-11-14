@@ -32,6 +32,7 @@
             <p>Номер: {{ $reports -> number }}</p>
             <p>Описание: {{ $reports -> description }}</p>
             <p>Дата: {{ $reports -> created_at }}</p>
+            <p>{{ $reports -> status -> name }}</p>
             <form method="POST" action="{{route('reports.destroy', $reports->id)}}">
               @method('delete')
               @csrf 
@@ -40,6 +41,25 @@
             <a href="{{ route('reports.edit',  ['report' => $reports->id]) }}">Обновить заявление</a>
           </div>
         @endforeach
+       
+        <div>
+          <span>Сортировка</span>
+          <a href="{{ route('report.index', ['sort' => 'desc']) }}">Сначала новые</a>
+          <a href="{{ route('report.index', ['sort' => 'asc']) }}">Сначала старые</a>
+        </div>
+
+        <div>
+          <p>Фильтрация по статусу заявки</p>
+          <ul>
+            @foreach($statuses as $status)
+            <li>
+              <a href="{{ route('reports.index', ['status' => $status -> id]) }}">
+                {{ $status -> name }}
+              </a>
+            </li>
+            @endforeach
+          </ul>
+        </div>
     </div>
     <a href="{{ route('reports.create') }}">Создать заявление</a>
     </div>

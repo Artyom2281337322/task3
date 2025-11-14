@@ -7,9 +7,30 @@ use App\Models\Report;
 
 class ReportController extends Controller
 {
-   public function index() {
-        $reports = Report::all();
-        return view('report.index', compact('reports'));
+   public function index(Request $request) {
+    $sort = $request -> input('sort');
+    if ($sort == 'asc' || $sort == 'desc'){
+        $reports = Report::orderBy('created_at', $sort) -> paginate(5);
+        
+    }
+    else {
+        $reports = Report::paginate(5);
+        
+    }
+
+    $status = $request -> input('status');
+    $validate = $request -> validate([
+        'status' => "exists:statuses,id"
+    ]);
+    if($validate){
+        $reports = Report::where('status_id', $status) -> paginate(5);
+    }
+    else {
+        $reports = Report::paginate(5);
+    }
+
+    $statuses = Status::all();
+    return view('report.index', compact('reports', 'statuses'));
     }
 
     public function destroy(Report $report) {

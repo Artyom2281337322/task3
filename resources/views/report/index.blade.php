@@ -44,8 +44,8 @@
        
         <div>
           <span>Сортировка</span>
-          <a href="{{ route('report.index', ['sort' => 'desc']) }}">Сначала новые</a>
-          <a href="{{ route('report.index', ['sort' => 'asc']) }}">Сначала старые</a>
+          <a href="{{ route('report.index', ['sort' => 'desc', 'status' => $status]) }}">Сначала новые</a>
+          <a href="{{ route('report.index', ['sort' => 'asc', 'status' => $status]) }}">Сначала старые</a>
         </div>
 
         <div>
@@ -53,7 +53,7 @@
           <ul>
             @foreach($statuses as $status)
             <li>
-              <a href="{{ route('reports.index', ['status' => $status -> id]) }}">
+              <a href="{{ route('report.index', ['status' => $status -> id]) }}">
                 {{ $status -> name }}
               </a>
             </li>

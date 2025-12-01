@@ -51,7 +51,7 @@ class ReportController extends Controller
         ]);
 
         $data['user_id'] = Auth::user() -> id;
-        $data['status_id'] = 4;
+        $data['status_id'] = 1;
 
         $report -> create($data);
         return redirect() -> back();

@@ -51,7 +51,7 @@ class ReportController extends Controller
         ]);
 
         $data['user_id'] = Auth::user() -> id;
-        $data['status_id'] = 1;
+        $data['status_id'] = 4;
 
         $report -> create($data);
         return redirect() -> back();
@@ -65,7 +65,7 @@ class ReportController extends Controller
         }
     }
 
-    function update(Request $request, Report $report) {
+   public function update(Request $request, Report $report) {
         if (Auth::user()->id === $report->user_id)
        { $data = $request -> validate([
             'number' => 'string',
@@ -77,5 +77,13 @@ class ReportController extends Controller
          else {
             abort(403, 'У вас нет прав на редактирование этой записи');
         }
+    }
+
+   public function statusUpdate(Request $request, Report $report) {
+        $request -> validate([
+            'status_id' => 'required|exists:statuses,id'
+        ]);
+        $report->update($request->only(['status_id']));
+        return redirect() -> back();
     }
 }

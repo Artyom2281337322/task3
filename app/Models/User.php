@@ -53,4 +53,10 @@ class User extends Authenticatable
     public function reports() {
         return $this -> hasMany(Report::class);
     }
+
+    const ADMIN_ROLE = 'admin';
+
+    public function isAdmin() {
+        return $this -> role === self::ADMIN_ROLE;
+    }
 }

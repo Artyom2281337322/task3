@@ -80,10 +80,16 @@ class ReportController extends Controller
     }
 
    public function statusUpdate(Request $request, Report $report) {
+   
+    if ($report->status_id != 4) { 
+        return redirect()->back()->with('error');
+    }
+    
         $request -> validate([
             'status_id' => 'required|exists:statuses,id'
         ]);
         $report->update($request->only(['status_id']));
         return redirect() -> back();
+    
     }
 }

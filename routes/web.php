@@ -7,7 +7,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Middleware\Admin;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 

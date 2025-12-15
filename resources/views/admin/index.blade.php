@@ -814,7 +814,7 @@
    </head>
 
    <body>
-      
+
        <nav>
            <div class="nav-container">
                <a href="{{ url('/admin') }}" class="logo">
@@ -840,7 +840,7 @@
                    </p>
                </div>
            </div>
-           
+
            <div class="stats" style="width: 90%;">
                <div class="stat-card">
                    <h4>Всего заявок</h4>
@@ -902,6 +902,7 @@
                                    @endif
                                </td>
                                <td>
+                                   @if($report->status_id === 4)
                                    <form class="status-form" action="{{ route('reports.status.update', $report->id) }}" method="POST">
                                        @method('PATCH')
                                        @csrf
@@ -910,12 +911,20 @@
                                            $statuses = \App\Models\Status::all();
                                            @endphp
                                            @foreach($statuses as $status)
-                                           <option value="{{ $status->id }}" {{ $status -> id === $report -> status_id ? 'selected' : '' }}>
+                                           <option value="{{ $status->id }}" {{ $status->id === $report->status_id ? 'selected' : '' }}>
                                                {{ $status->name }}
                                            </option>
                                            @endforeach
                                        </select>
                                    </form>
+                                   @else
+                                   @if($report->status_id === 5)
+                                   <p class="status-text" style="background-color: lightgreen; padding: 15px; border-radius: 10px">{{ $report->status->name }}</p>
+                                    @endif
+                                    @if($report->status_id === 6)
+                                    <p class="status-text" style=" background-color:  #ff3856ff; padding: 15px; border-radius: 10px">{{ $report->status->name }}</p>
+                                  @endif
+                                   @endif
                                </td>
                                <td>
                                    <div class="date-time">
@@ -932,7 +941,7 @@
                        </tbody>
                    </table>
                </div>
-               
+
            </div>
 
 

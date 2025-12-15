@@ -515,7 +515,7 @@
     <nav x-data="{ open: false }">
         <div class="nav-container">
             <!-- Логотип -->
-            <a href="{{ route('dashboard') }}" class="logo">
+            <a href="#" class="logo">
                 <i class="fas fa-tasks"></i>
                 <span>Заявки</span>
             </a>
@@ -533,7 +533,7 @@
     <div class="container">
         <!-- Хлебные крошки -->
         <div class="breadcrumbs">
-            <a href="{{ route('dashboard') }}">Главная</a>
+            <a href="#">Главная</a>
             <i class="fas fa-chevron-right"></i>
             <a href="{{ route('report.index') }}">Заявки</a>
             <i class="fas fa-chevron-right"></i>
